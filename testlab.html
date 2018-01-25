@@ -11,8 +11,13 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1>Hello, world!</h1>
-
+<div class="card">
+    <a href="' . get_permalink() . '"><img class="card-img-top" src="' . $thumb_url . '"></a>
+    <div class="card-body">
+        <h5 class="card-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>
+        <p class="card-text">' . get_the_excerpt() . '</p>
+    </div>
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

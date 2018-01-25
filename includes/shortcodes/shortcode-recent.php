@@ -83,7 +83,7 @@ function nix_recent_posts_function($atts)
                 'posts' => '3',
             ), $atts)
     );
-    $return_string = '<div class="nix-recent-posts">';
+    $return_string = '<div class="nix-recent-posts container"><div class="row">';
     query_posts(array('orderby' => 'date', 'order' => 'DESC', 'showposts' => $posts));
     if (have_posts()) :
         while (have_posts()) : the_post();
@@ -91,22 +91,19 @@ function nix_recent_posts_function($atts)
             $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'nix_recent_posts', true);
             $thumb_url = $thumb_url_array[0];
             $return_string .= '
-<div class="well well-sm">
-	<div class="row">
-		<div class="col-sm-4">
-			<a href="' . get_permalink() . '"><img src="' . $thumb_url . '" class="img-fluid"></a>
-		</div>
-  		<div class="col-sm-8">
-    		<h5><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>
-    		<div class="nix-recent-text">' . get_the_excerpt() . '</div>
-  		</div>
-	</div>
-	<div class="clearfix"></div>
+<div class="col-md-4">
+<div class="card">
+    <a href="' . get_permalink() . '"><img class="card-img-top" src="' . $thumb_url . '"></a>
+    <div class="card-body">
+        <h5 class="card-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h5>
+        <p class="card-text">' . get_the_excerpt() . '</p>
+    </div>
+</div>
 </div>
          ';
         endwhile;
     endif;
-    $return_string .= '</div>';
+    $return_string .= '</div></div>';
 
     wp_reset_query();
 
